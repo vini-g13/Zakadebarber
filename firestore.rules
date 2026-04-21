@@ -1,0 +1,51 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Kappers: iedereen mag lezen (voor de website), alleen admins schrijven
+    match /kappers/{kapperId} {
+      allow read: if true;
+      allow write: if request.auth != null && isAdmin();
+    }
+
+    // ── Services: iedereen mag lezen, alleen admins schrijven
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if request.auth != null && isAdmin();
+    }
+
+    // ── Afspraken
+    match /appointments/{appointmentId} {
+      // Lezen: de kapper zelf of admin
+      allow read: if request.auth != null &&
+                    (resource.data.kapperId == request.auth.uid || isAdmin());
+
+      // Aanmaken: iedereen (klant boekt afspraak)
+      allow create: if true;
+
+      // Wijzigen: kapper zelf (voor annuleren/verplaatsen) of admin
+      allow update: if request.auth != null &&
+                      (resource.data.kapperId == request.auth.uid || isAdmin());
+
+      // Verwijderen: alleen admin
+      allow delete: if request.auth != null && isAdmin();
+    }
+
+    // ── Geblokkeerde slots
+    match /blockedSlots/{blockId} {
+      // Lezen: iedereen (voor beschikbaarheidscheck op website)
+      allow read: if true;
+
+      // Schrijven: enkel geauthenticeerde kappers (voor zichzelf) of admin
+      allow create: if request.auth != null &&
+                      request.resource.data.kapperId == request.auth.uid;
+      allow delete: if request.auth != null &&
+                      (resource.data.kapperId == request.auth.uid || isAdmin());
+    }
+
+    // Helper: controleer of ingelogde gebruiker admin is
+    function isAdmin() {
+      return get(/databases/$(database)/documents/kappers/$(request.auth.uid)).data.role == 'admin';
+    }
+  }
+}

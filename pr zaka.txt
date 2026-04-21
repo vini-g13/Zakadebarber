@@ -1,0 +1,200 @@
+# Claude Code Prompt — Website Kapperszaak 
+
+## Projectomschrijving 
+
+Bouw een volledige, professionele bedrijfswebsite in **Nederlands** voor een kapperszaak. De kapper werkte vroeger vanuit een schuurtje thuis en heeft since een jaar een officiële zaak geopend. Het verhaal is: van buurtkappers naar echte zaak, maar met die vertrouwde, persoonlijke sfeer behouden. Dit gevoel moet doorschemeren in de hele website.
+
+Dit project bestaat uit **twee delen**:
+1. De **publieke website** voor klanten
+2. Een **PWA (Progressive Web App)** voor de kappers zelf om afspraken te beheren via hun smartphone
+
+---
+
+## Doelgroep
+
+Voornamelijk jongens en mannen (alle leeftijden), maar de zaak staat ook open voor vrouwen en kinderen.
+
+---
+
+## Doel van de website
+
+- Bezoekers informeren over de diensten en prijzen
+- Klanten online een afspraak laten boeken
+- Professionele uitstraling geven aan de zaak
+
+---
+
+## Pagina's / Structuur (publieke website)
+
+Bouw de volgende pagina's of secties (mag een one-pager zijn met anchor links):
+
+1. **Hero / Home** — Pakkende introductie met naam van de zaak, sfeerfoto, en duidelijke call-to-action ("Boek een afspraak")
+2. **Over ons** — Het verhaal van de kapper: van schuurtje thuis naar eigen zaak. Persoonlijk, authentiek en warm geschreven.
+3. **Diensten & Prijzen** — Duidelijk overzicht van alle diensten met vaste prijzen per dienst (gebruik placeholder prijzen die later aangepast kunnen worden, bv. Knippen €15, Baard trimmen €10, etc.)
+4. **Boek een afspraak** — Volledig online boekingssysteem (zie details hieronder)
+5. **Galerij** — Grid met foto's van de zaak en kapsels (gebruik placeholder images via https://picsum.photos, later te vervangen door echte foto's)
+6. **Contact** — Telefoonnummer, WhatsApp-knop, adres, en openingsuren (placeholders)
+7. **Footer** — Links naar Instagram en TikTok, adres, BTW-nummer (placeholder), privacybeleid link
+
+---
+
+## Boekingssysteem — Publieke kant (klant)
+
+### Stap-voor-stap boekingsflow:
+
+**Stap 1 — Kies een kapper**
+- Toon 4 kappers met naam en foto (placeholder):
+  - Kapper 1 (vaste kracht)
+  - Kapper 2 (vaste kracht)
+  - Kapper 3 (stagiair — altijd beschikbaar)
+  - Kapper 4 (jobstudent — enkel zichtbaar en boekbaar tijdens schoolvakanties)
+
+**Stap 2 — Kies een dienst**
+- Dropdown of keuzekaarten met diensten en duur (bv. Knippen — 30 min, Baard — 20 min, etc.)
+
+**Stap 3 — Kies een datum en tijdslot**
+- Kalender-weergave per kapper
+- Beschikbare tijdslots in vaste intervallen (bv. elk 30 minuten)
+- Reeds geboekte of geblokkeerde slots zijn **niet selecteerbaar** en duidelijk grijs weergegeven
+- Slots die geannuleerd zijn door de kapper worden automatisch weer vrijgegeven
+
+**Stap 4 — Vul je gegevens in**
+- Naam (verplicht)
+- E-mailadres (verplicht)
+- Telefoonnummer (verplicht)
+- Optionele opmerking (bv. "Ik wil ook mijn baard laten trimmen")
+
+**Stap 5 — Bevestiging**
+- Overzichtspagina met alle gekozen gegevens
+- "Bevestig boeking" knop
+- Na bevestiging: bevestigingspagina + automatische bevestigingsmail naar de klant
+
+### Bevestigingsmail (naar klant):
+- Naam van de kapper
+- Datum en tijdstip
+- Gekozen dienst
+- Adres van de zaak
+- Link om afspraak te annuleren (unieke token per boeking)
+
+---
+
+## PWA — Beheersapp voor kappers (telefoon)
+
+Bouw een aparte **Progressive Web App** die de kappers kunnen installeren op hun smartphone (via "Voeg toe aan beginscherm" in de browser). Geen app store nodig.
+
+### Toegang:
+- Eenvoudige login per kapper (gebruikersnaam + wachtwoord)
+- Elke kapper ziet **alleen zijn eigen agenda**
+- Eén extra **admin-login** voor de zaakvoerder die alle agenda's kan zien en beheren
+
+### Functies per kapper (eigen agenda):
+
+**Dagweergave:**
+- Overzicht van alle afspraken van de dag, gesorteerd op tijdstip
+- Per afspraak: naam klant, tijdstip, dienst, telefoonnummer (klikbaar om direct te bellen)
+
+**Weekweergave:**
+- Kalenderoverzicht van de volledige week
+- In één oogopslag zien hoeveel afspraken er zijn per dag
+
+**Afspraak beheren:**
+- Afspraak annuleren (klant krijgt automatisch een annuleringsmail, slot wordt vrijgegeven op de website)
+- Afspraak verplaatsen naar ander tijdstip
+- Notitie toevoegen aan een afspraak (intern, niet zichtbaar voor klant)
+
+**Beschikbaarheid beheren:**
+- Tijdslots blokkeren (bv. lunchpauze, vakantie, ziek)
+- Geblokkeerde slots zijn meteen niet meer boekbaar op de website
+
+**Meldingen:**
+- Pushmelding bij nieuwe boeking (via browser notificaties)
+
+### Extra voor admin (zaakvoerder):
+- Overzicht van alle kappers en hun agenda's
+- Kapper 4 (jobstudent) activeren/deactiveren afhankelijk van schoolvakantie
+- Nieuwe kapper toevoegen of verwijderen
+
+---
+
+## Technische architectuur
+
+### Aanbevolen stack:
+- **Frontend website**: HTML, CSS, vanilla JavaScript (of React)
+- **PWA beheersapp**: React + Vite, met PWA plugin (`vite-plugin-pwa`)
+- **Backend / Database**: Gebruik **Firebase** (Firestore voor data, Firebase Auth voor login, Firebase Cloud Functions voor e-mails)
+  - Gratis tier is ruim voldoende voor een kapperszaak
+  - Realtime updates: als een slot geboekt wordt, verdwijnt het meteen op de website
+- **E-mails**: Via **EmailJS** of **SendGrid** (gratis tier) voor bevestigings- en annuleringsmails
+- **Unieke annuleringslink**: genereer een UUID per boeking, sla op in Firestore, valideer bij annulering
+
+### Mapstructuur:
+```
+/website          → publieke klantenwebsite
+/pwa              → beheersapp voor kappers
+/functions        → Firebase Cloud Functions (e-mails, etc.)
+README.md         → instructies voor setup en deployment
+```
+
+---
+
+## Design & Stijl
+
+- **Sfeer**: Modern en urban, maar met een warm en persoonlijk buurtkappergevoel. Denk aan een hybride tussen een strakke barbershop en een lokale vertrouwde kapper.
+- **Kleurenpalet**: Donkere tinten (zwart, antraciet) gecombineerd met een warme accentkleur (bv. goud, caramel of oker). Vermijd felle of kinderachtige kleuren.
+- **Typografie**: Gebruik een stoere maar leesbare display font voor titels en een clean body font. Vermijd generieke fonts zoals Arial of Inter.
+- **Sfeerbeelden**: Gebruik placeholder afbeeldingen (picsum.photos) die later vervangen worden door echte foto's van de zaak.
+- **Animaties**: Subtiele scroll-animaties en hover-effecten. Geen overdreven effecten.
+- **PWA stijl**: Zelfde kleurenpalet als de website. Clean en functioneel — kappers moeten snel kunnen navigeren.
+
+---
+
+## Technische vereisten (algemeen)
+
+- **Volledig responsive** (mobile-first): zowel website als PWA
+- **WhatsApp-knop**: gebruik `https://wa.me/32XXXXXXXXX` als placeholder link
+- **Google Maps embed**: voeg een placeholder in voor de locatie
+- **Snelle laadtijd**: optimaliseer afbeeldingen en vermijd zware libraries
+- **SEO-basis**: correcte `<title>`, meta description, Open Graph tags (placeholders)
+- **GDPR**:
+  - Cookiebanner met accept/weigeren
+  - Privacybeleid pagina (template, later juridisch na te kijken)
+  - Bij boeking: checkbox "Ik ga akkoord met de privacyverklaring"
+
+---
+
+## Sociale media
+
+- Link naar Instagram (placeholder: `https://instagram.com/kappersnaam`)
+- Link naar TikTok (placeholder: `https://tiktok.com/@kappersnaam`)
+
+---
+
+## Placeholders die later ingevuld worden
+
+- Naam van de kapperszaak
+- Logo (`logo.png`)
+- Namen en foto's van de kappers
+- Adres en telefoonnummer
+- Exacte prijzen en duur per dienst
+- Openingsuren en schoolvakantieplanning
+- Instagram en TikTok handle
+- Echte foto's (vervangen picsum placeholders)
+- BTW-nummer
+- Google Maps embed code
+- Firebase project configuratie (API keys)
+- E-mail configuratie (SendGrid of EmailJS API key)
+
+---
+
+## Extra instructies
+
+- Schrijf alle teksten in het **Nederlands**
+- Schrijf het "Over ons" verhaal warm en authentiek: van passie voor knippen thuis naar een echte professionele zaak
+- Zorg dat de **"Boek nu" knop altijd zichtbaar** is op mobiel (sticky button)
+- Zorg dat annuleringen door klanten **automatisch het slot vrijgeven** in realtime
+- Kapper 4 (jobstudent) moet eenvoudig aan/uit te zetten zijn door de admin
+- Schrijf een duidelijke **README.md** met:
+  - Hoe Firebase op te zetten (stap voor stap)
+  - Hoe e-mails te configureren
+  - Hoe de PWA te installeren op een smartphone
+  - Hoe een nieuwe kapper toe te voegen

@@ -1,0 +1,13 @@
+{
+  "projects": {
+    "default": "JOUW_PROJECT_ID"
+  },
+  "targets": {
+    "JOUW_PROJECT_ID": {
+      "hosting": {
+        "website": ["JOUW_WEBSITE_HOSTING_TARGET"],
+        "pwa":     ["JOUW_PWA_HOSTING_TARGET"]
+      }
+    }
+  }
+}

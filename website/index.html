@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZakaDeBarber — Jouw buurtkapperszaak</title>
+  <meta name="description" content="ZakaDeBarber – professionele kapper in de buurt. Boek online een afspraak voor knippen, baard trimmen en meer. Warm, persoonlijk en vakkundig.">
+  <!-- Open Graph -->
+  <meta property="og:title"       content="ZakaDeBarber — Jouw buurtkapperszaak">
+  <meta property="og:description" content="Boek online een afspraak bij ZakaDeBarber. Professioneel knippen met een warm buurtgevoel.">
+  <meta property="og:type"        content="website">
+  <meta property="og:image"       content="https://picsum.photos/seed/barbershopog/1200/630">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Favicon (placeholder) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂️</text></svg>">
+</head>
+<body>
+
+<!-- ─── Toast container ─────────────────────────────────── -->
+<div id="toast-container"></div>
+
+<!-- ─── Cookie Banner ──────────────────────────────────── -->
+<div id="cookie-banner" role="dialog" aria-label="Cookiemelding">
+  <p>
+    We gebruiken cookies om jouw boeking te verwerken en de website te verbeteren.
+    Lees meer in onze <a href="privacy.html">privacyverklaring</a>.
+  </p>
+  <div class="cookie-actions">
+    <button class="btn btn-outline" id="cookie-decline">Weigeren</button>
+    <button class="btn btn-primary" id="cookie-accept">Accepteren</button>
+  </div>
+</div>
+
+<!-- ─── Navigation ─────────────────────────────────────── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="nav-logo">Zaka<span>De</span>Barber</a>
+    <ul class="nav-links">
+      <li><a href="#over-ons">Over ons</a></li>
+      <li><a href="#diensten">Diensten</a></li>
+      <li><a href="#galerij">Galerij</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#boeken" class="btn btn-primary nav-cta">Boek een afspraak</a></li>
+    </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<nav class="nav-mobile" id="nav-mobile">
+  <a href="#over-ons">Over ons</a>
+  <a href="#diensten">Diensten</a>
+  <a href="#galerij">Galerij</a>
+  <a href="#contact">Contact</a>
+  <a href="#boeken" class="btn btn-primary">Boek een afspraak</a>
+</nav>
+
+<!-- ─── HERO ────────────────────────────────────────────── -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-tag">Jouw buurtkapperszaak</div>
+    <h1 class="hero-title">
+      Meer dan een<br>
+      knipbeurt.<br>
+      <span>Een gevoel.</span>
+    </h1>
+    <p class="hero-subtitle">
+      Van een vertrouwde schuur in de buurt naar een echte professionele zaak —
+      maar met diezelfde warmte die je altijd al kende.
+    </p>
+    <div class="hero-actions">
+      <a href="#boeken" class="btn btn-primary">
+        ✂️ Boek een afspraak
+      </a>
+      <a href="#over-ons" class="btn btn-outline">Ons verhaal</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="number">4</span>
+        <span class="label">Vakkundige kappers</span>
+      </div>
+      <div class="hero-stat">
+        <span class="number">500+</span>
+        <span class="label">Tevreden klanten</span>
+      </div>
+      <div class="hero-stat">
+        <span class="number">1 jaar</span>
+        <span class="label">Officiële zaak</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ─── OVER ONS ─────────────────────────────────────────── -->
+<section id="over-ons" class="section">
+  <div class="container over-ons-grid">
+    <div class="over-ons-img-wrap" data-animate>
+      <img
+        src="https://picsum.photos/seed/barbershopinterior/700/700"
+        alt="Interieur van ZakaDeBarber"
+        class="over-ons-img"
+        loading="lazy"
+      >
+      <div class="over-ons-badge">
+        <span class="big">1+</span>
+        <span class="small">jaar in de zaak</span>
+      </div>
+    </div>
+    <div class="over-ons-text" data-animate data-animate-delay="2">
+      <span class="section-label">Ons verhaal</span>
+      <h2 class="section-title">Van schuurtje thuis<br>naar echte zaak</h2>
+      <p class="lead">
+        Het begon allemaal met een stoel, een spiegel en een passie voor knippen — gewoon thuis, in een schuurtje. Buurtbewoners wisten de weg te vinden, en langzaam maar zeker groeide de naam.
+      </p>
+      <p>
+        Wat ooit een hobby was, is intussen een echte, volwaardige kapperszaak geworden. Maar één ding is nooit veranderd: de persoonlijke aanpak. Hier ben je geen nummertje. We weten hoe je het graag hebt. We onthouden het gesprek van vorige keer. En we zorgen dat je naar buiten stapt met een gevoel dat klopt.
+      </p>
+      <p>
+        ZakaDeBarber: professioneel in de aanpak, menselijk in de omgang. Voor iedereen in de buurt — mannen, vrouwen, kinderen. Altijd welkom.
+      </p>
+      <div class="over-ons-features">
+        <div class="over-ons-feature">
+          <div class="feature-icon">✂️</div>
+          <div>
+            <h4>Vakkundig team</h4>
+            <p>Gediplomeerde en ervaren kappers</p>
+          </div>
+        </div>
+        <div class="over-ons-feature">
+          <div class="feature-icon">🤝</div>
+          <div>
+            <h4>Persoonlijk contact</h4>
+            <p>Jij bent geen nummer bij ons</p>
+          </div>
+        </div>
+        <div class="over-ons-feature">
+          <div class="feature-icon">📅</div>
+          <div>
+            <h4>Online boeking</h4>
+            <p>24/7 een afspraak inplannen</p>
+          </div>
+        </div>
+        <div class="over-ons-feature">
+          <div class="feature-icon">🏙️</div>
+          <div>
+            <h4>In het hart van de buurt</h4>
+            <p>Makkelijk bereikbaar voor iedereen</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DIENSTEN & PRIJZEN ────────────────────────────────── -->
+<section id="diensten" class="section">
+  <div class="container">
+    <div class="diensten-header" data-animate>
+      <span class="section-label">Wat we doen</span>
+      <h2 class="section-title">Diensten & Prijzen</h2>
+      <p class="section-subtitle">Transparante prijzen, zonder verrassingen. Kies de dienst die bij jou past.</p>
+    </div>
+    <div class="diensten-grid">
+
+      <div class="dienst-card" data-animate data-animate-delay="1">
+        <div class="dienst-card-icon">✂️</div>
+        <h3>Knippen</h3>
+        <p>Klassieke knipbeurt op maat — fade, klassiek of modern. Altijd strak afgewerkt.</p>
+        <div class="dienst-meta">
+          <span class="dienst-price">€15</span>
+          <span class="dienst-duur">⏱ 30 min</span>
+        </div>
+      </div>
+
+      <div class="dienst-card" data-animate data-animate-delay="2">
+        <div class="dienst-card-icon">🪒</div>
+        <h3>Knippen + Baard</h3>
+        <p>Volledig verzorgd — knipbeurt én baard getrimd of geschoren naar jouw wens.</p>
+        <div class="dienst-meta">
+          <span class="dienst-price">€22</span>
+          <span class="dienst-duur">⏱ 50 min</span>
+        </div>
+      </div>
+
+      <div class="dienst-card" data-animate data-animate-delay="3">
+        <div class="dienst-card-icon">🧔</div>
+        <h3>Baard trimmen</h3>
+        <p>Baard bijgewerkt, strak in model gezet. Contouren geschoren voor een nette look.</p>
+        <div class="dienst-meta">
+          <span class="dienst-price">€10</span>
+          <span class="dienst-duur">⏱ 20 min</span>
+        </div>
+      </div>
+
+      <div class="dienst-card" data-animate data-animate-delay="1">
+        <div class="dienst-card-icon">👦</div>
+        <h3>Knippen (kind &lt;12j)</h3>
+        <p>Voor onze jongste klanten — rustig, geduldig en strak. Ze gaan tevreden naar buiten.</p>
+        <div class="dienst-meta">
+          <span class="dienst-price">€12</span>
+          <span class="dienst-duur">⏱ 25 min</span>
+        </div>
+      </div>
+
+      <div class="dienst-card" data-animate data-animate-delay="2">
+        <div class="dienst-card-icon">🎨</div>
+        <h3>Fade / Dégradé</h3>
+        <p>Perfecte verloop van lang naar kort. Skin fade, low fade of high fade — jij kiest.</p>
+        <div class="dienst-meta">
+          <span class="dienst-price">€18</span>
+          <span class="dienst-duur">⏱ 45 min</span>
+        </div>
+      </div>
+
+      <div class="dienst-card" data-animate data-animate-delay="3">
+        <div class="dienst-card-icon">🪑</div>
+        <h3>Klassiek scheren</h3>
+        <p>Strakke baard of gladde huid — met warm zeepschuim en een vlijmscherp mes.</p>
+        <div class="dienst-meta">
+          <span class="dienst-price">€15</span>
+          <span class="dienst-duur">⏱ 30 min</span>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;" data-animate>
+      <a href="#boeken" class="btn btn-primary">Boek nu een afspraak ✂️</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOEKINGSSYSTEEM ────────────────────────────────────── -->
+<section id="boeken" class="section">
+  <div class="container">
+    <div class="boeken-header" data-animate>
+      <span class="section-label">Online boeking</span>
+      <h2 class="section-title">Boek een afspraak</h2>
+      <p class="section-subtitle">In 5 stappen snel een afspraak inplannen — wanneer het jou past.</p>
+    </div>
+
+    <!-- Booking Wrapper -->
+    <div class="booking-wrapper" id="booking-wrapper">
+
+      <!-- Progress Bar -->
+      <div class="booking-progress">
+        <div class="progress-step active" data-step="1">
+          <div class="step-num">1</div>
+          <span>Kapper</span>
+        </div>
+        <div class="progress-step" data-step="2">
+          <div class="step-num">2</div>
+          <span>Dienst</span>
+        </div>
+        <div class="progress-step" data-step="3">
+          <div class="step-num">3</div>
+          <span>Datum & Tijd</span>
+        </div>
+        <div class="progress-step" data-step="4">
+          <div class="step-num">4</div>
+          <span>Gegevens</span>
+        </div>
+        <div class="progress-step" data-step="5">
+          <div class="step-num">5</div>
+          <span>Bevestig</span>
+        </div>
+      </div>
+
+      <div class="booking-body">
+
+        <!-- Stap 1: Kies een kapper -->
+        <div class="booking-step active" data-step="1">
+          <h2 class="booking-step-title">Kies jouw kapper</h2>
+          <p class="booking-step-subtitle">Selecteer de kapper waarbij je een afspraak wil maken.</p>
+          <div class="kappers-grid" id="kappers-grid">
+            <!-- Dynamisch ingevuld via booking.js -->
+            <div style="color:var(--clr-muted); font-size:0.88rem;">Kappers laden…</div>
+          </div>
+          <div class="booking-nav">
+            <span></span>
+            <button class="btn btn-primary btn-next">Volgende →</button>
+          </div>
+        </div>
+
+        <!-- Stap 2: Kies een dienst -->
+        <div class="booking-step" data-step="2">
+          <h2 class="booking-step-title">Kies een dienst</h2>
+          <p class="booking-step-subtitle">Wat mag het zijn?</p>
+          <div class="diensten-select-grid" id="diensten-select-grid">
+            <!-- Dynamisch ingevuld via booking.js -->
+          </div>
+          <div class="booking-nav">
+            <button class="btn btn-ghost btn-prev">← Terug</button>
+            <button class="btn btn-primary btn-next">Volgende →</button>
+          </div>
+        </div>
+
+        <!-- Stap 3: Datum & Tijd -->
+        <div class="booking-step" data-step="3">
+          <h2 class="booking-step-title">Kies datum & tijdstip</h2>
+          <p class="booking-step-subtitle">Selecteer een beschikbare dag en een vrij tijdslot.</p>
+          <div class="datetime-grid">
+            <div class="calendar-wrap">
+              <h4>📅 Kies een datum</h4>
+              <div class="mini-cal">
+                <div class="mini-cal-header">
+                  <button class="cal-nav" id="cal-prev">‹</button>
+                  <span class="month-label" id="cal-month-label">—</span>
+                  <button class="cal-nav" id="cal-next">›</button>
+                </div>
+                <div class="mini-cal-grid">
+                  <div class="cal-day-header">Ma</div>
+                  <div class="cal-day-header">Di</div>
+                  <div class="cal-day-header">Wo</div>
+                  <div class="cal-day-header">Do</div>
+                  <div class="cal-day-header">Vr</div>
+                  <div class="cal-day-header">Za</div>
+                  <div class="cal-day-header">Zo</div>
+                  <div id="cal-grid"><!-- Dynamisch --></div>
+                </div>
+              </div>
+            </div>
+            <div class="slots-wrap">
+              <h4>⏰ Kies een tijdslot</h4>
+              <div id="slots-wrap">
+                <div class="slots-empty">Selecteer eerst een datum.</div>
+              </div>
+            </div>
+          </div>
+          <div class="booking-nav">
+            <button class="btn btn-ghost btn-prev">← Terug</button>
+            <button class="btn btn-primary btn-next">Volgende →</button>
+          </div>
+        </div>
+
+        <!-- Stap 4: Persoonlijke gegevens -->
+        <div class="booking-step" data-step="4">
+          <h2 class="booking-step-title">Jouw gegevens</h2>
+          <p class="booking-step-subtitle">Vul je gegevens in zodat we jou de bevestiging kunnen sturen.</p>
+          <div class="booking-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-naam">Naam *</label>
+                <input type="text" id="f-naam" placeholder="Voornaam Achternaam" autocomplete="name" required>
+              </div>
+              <div class="form-group">
+                <label for="f-tel">Telefoonnummer *</label>
+                <input type="tel" id="f-tel" placeholder="+32 4XX XX XX XX" autocomplete="tel" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="f-email">E-mailadres *</label>
+              <input type="email" id="f-email" placeholder="jouw@email.be" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+              <label for="f-nota">Opmerking (optioneel)</label>
+              <textarea id="f-nota" placeholder="Bv. ik wil ook mijn baard laten trimmen…"></textarea>
+            </div>
+            <div class="privacy-check">
+              <input type="checkbox" id="f-privacy" required>
+              <label for="f-privacy">
+                Ik ga akkoord met de <a href="privacy.html" target="_blank">privacyverklaring</a>
+                en geef toestemming voor de verwerking van mijn gegevens voor de boeking. *
+              </label>
+            </div>
+          </div>
+          <div class="booking-nav">
+            <button class="btn btn-ghost btn-prev">← Terug</button>
+            <button class="btn btn-primary btn-next">Controleer boeking →</button>
+          </div>
+        </div>
+
+        <!-- Stap 5: Bevestiging -->
+        <div class="booking-step" data-step="5">
+          <h2 class="booking-step-title">Bevestig jouw boeking</h2>
+          <p class="booking-step-subtitle">Controleer je afspraakgegevens voordat je bevestigt.</p>
+          <div class="booking-summary">
+            <h3>📋 Samenvatting</h3>
+            <div id="booking-summary-rows">
+              <!-- Dynamisch ingevuld -->
+            </div>
+          </div>
+          <div class="booking-nav">
+            <button class="btn btn-ghost btn-prev">← Wijzigen</button>
+            <button class="btn btn-primary" id="btn-submit">
+              ✅ Bevestig boeking
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /booking-body -->
+    </div><!-- /booking-wrapper -->
+
+    <!-- Success State -->
+    <div class="booking-success" id="booking-success">
+      <div class="success-icon">✅</div>
+      <h2>Afspraak bevestigd!</h2>
+      <p>
+        Bedankt, <strong id="success-name"></strong>! Je afspraak is geboekt:
+        <br><span id="success-details"></span>.
+        <br><br>
+        Je ontvangt een bevestigingsmail met alle details en een annuleringslink.
+      </p>
+      <a href="#boeken" class="btn btn-primary" onclick="location.reload()">Nieuwe afspraak boeken</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── GALERIJ ───────────────────────────────────────────── -->
+<section id="galerij" class="section">
+  <div class="container">
+    <div class="galerij-header" data-animate>
+      <span class="section-label">Portfolio</span>
+      <h2 class="section-title">Onze galerij</h2>
+      <p class="section-subtitle">Een greep uit ons werk — klik op een foto voor een betere blik.</p>
+    </div>
+    <div class="galerij-grid" data-animate>
+      <div class="galerij-item"><img src="https://picsum.photos/seed/bcut1/600/800"  alt="Kapsel 1"  loading="lazy"></div>
+      <div class="galerij-item"><img src="https://picsum.photos/seed/bcut2/600/500"  alt="Kapsel 2"  loading="lazy"></div>
+      <div class="galerij-item"><img src="https://picsum.photos/seed/bcut3/600/700"  alt="Kapsel 3"  loading="lazy"></div>
+      <div class="galerij-item"><img src="https://picsum.photos/seed/bcut4/600/600"  alt="Kapsel 4"  loading="lazy"></div>
+      <div class="galerij-item"><img src="https://picsum.photos/seed/bcut5/600/900"  alt="Kapsel 5"  loading="lazy"></div>
+      <div class="galerij-item"><img src="https://picsum.photos/seed/bcut6/600/500"  alt="Kapsel 6"  loading="lazy"></div>
+      <div class="galerij-item"><img src="https://picsum.photos/seed/bcut7/600/700"  alt="Kapsel 7"  loading="lazy"></div>
+      <div class="galerij-item"><img src="https://picsum.photos/seed/bcut8/600/600"  alt="Kapsel 8"  loading="lazy"></div>
+      <div class="galerij-item"><img src="https://picsum.photos/seed/bcut9/600/800"  alt="Kapsel 9"  loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <img id="lightbox-img" src="" alt="Vergroot beeld">
+  <button id="lightbox-close" aria-label="Sluiten">✕</button>
+</div>
+
+<!-- ─── CONTACT ───────────────────────────────────────────── -->
+<section id="contact" class="section">
+  <div class="container contact-grid">
+    <div class="contact-info" data-animate>
+      <span class="section-label">Vind ons</span>
+      <h2>Contact &<br>Openingsuren</h2>
+      <p>Vragen? Stuur ons een berichtje of kom gewoon binnen. We staan altijd voor je klaar.</p>
+
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-item-text">
+            <h4>Adres</h4>
+            <p>Voorbeeldstraat 1, 0000 Stad</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-item-text">
+            <h4>Telefoon</h4>
+            <a href="tel:+320000000000">+32 0 000 00 00</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-item-text">
+            <h4>E-mail</h4>
+            <a href="mailto:info@zakadebarber.be">info@zakadebarber.be</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="openingsuren">
+        <h4>Openingsuren</h4>
+        <div class="uur-row"><span class="day">Maandag</span>    <span class="time">09:00 – 18:30</span></div>
+        <div class="uur-row"><span class="day">Dinsdag</span>    <span class="time">09:00 – 18:30</span></div>
+        <div class="uur-row"><span class="day">Woensdag</span>   <span class="time">09:00 – 18:30</span></div>
+        <div class="uur-row"><span class="day">Donderdag</span>  <span class="time">09:00 – 18:30</span></div>
+        <div class="uur-row"><span class="day">Vrijdag</span>    <span class="time">09:00 – 18:30</span></div>
+        <div class="uur-row"><span class="day">Zaterdag</span>   <span class="time">09:00 – 17:00</span></div>
+        <div class="uur-row"><span class="day">Zondag</span>     <span class="gesloten">Gesloten</span></div>
+      </div>
+
+      <a href="https://wa.me/32XXXXXXXXX" class="btn whatsapp-btn" target="_blank" rel="noopener noreferrer">
+        💬 Stuur ons een WhatsApp
+      </a>
+    </div>
+
+    <div class="map-placeholder" data-animate data-animate-delay="2">
+      <!-- Vervang de src met jouw echte Google Maps embed code -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2499.999!2d4.35!3d50.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDUxJzAwLjAiTiA0wrAyMScwMC4wIkU!5e0!3m2!1snl!2sbe!4v0"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Locatie ZakaDeBarber"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo">Zaka<span>De</span>Barber</a>
+        <p>Professioneel knippen met een warm buurtgevoel. Van schuurtje tot échte zaak — maar altijd persoonlijk.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/kappersnaam" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
+            📸
+          </a>
+          <a href="https://tiktok.com/@kappersnaam" class="social-link" target="_blank" rel="noopener" aria-label="TikTok">
+            🎵
+          </a>
+          <a href="https://wa.me/32XXXXXXXXX" class="social-link" target="_blank" rel="noopener" aria-label="WhatsApp">
+            💬
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#over-ons">Over ons</a></li>
+          <li><a href="#diensten">Diensten & Prijzen</a></li>
+          <li><a href="#galerij">Galerij</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#boeken">Afspraak boeken</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="privacy.html">Privacybeleid</a></li>
+          <li><a href="#">Cookiebeleid</a></li>
+          <li><a href="#">Algemene voorwaarden</a></li>
+        </ul>
+        <div style="margin-top:1.5rem; font-size:0.82rem; color:var(--clr-muted);">
+          <p>BTW: BE0000.000.000</p>
+          <p style="margin-top:0.4rem;">Ondernemingsnr.: 0000.000.000</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 ZakaDeBarber. Alle rechten voorbehouden.</span>
+      <span>
+        <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+        <a href="#">Cookies</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── Sticky Boek Nu (mobile) ──────────────────────────── -->
+<a href="#boeken" class="btn btn-primary" id="sticky-boek">✂️ Boek Nu</a>
+
+<!-- ─── Scripts ───────────────────────────────────────────── -->
+<script src="js/main.js" type="module"></script>
+<script src="js/booking.js" type="module"></script>
+
+</body>
+</html>
